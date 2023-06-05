@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StudentManagement.Models.Payment>
+
+<p>
+    @Html.ActionLink("Create New", "AddPayment", "Payment", htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RefNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentFullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitAmountIncTax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionTypeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentFinalDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.RefNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StudentFullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Amount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitAmountIncTax)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BankName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TransactionTypeCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PaymentFinalDate)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditPaymentDetails", new { PaymentDetailId = item.PaymentDetailId }) |
+        @Html.ActionLink("Delete", "DeletePaymentDetails", new { PaymentDetailId = item.PaymentDetailId })
+    </td>
+</tr>
+}
+
+</table>

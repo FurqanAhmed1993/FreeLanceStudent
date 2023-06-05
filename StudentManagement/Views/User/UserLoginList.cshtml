@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StudentManagement.Models.UserLogin>
+
+<p>
+    @Html.ActionLink("Create User", "AddUserLogin", "User", htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoginId)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditUserLoginDetails", new { UserId = item.UserId }) |
+            @Html.ActionLink("Delete", "DeleteUser", new { UserId = item.UserId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StudentManagement.Models.Bank>
+
+<p>
+    @Html.ActionLink("Create New", "AddBank", "Bank", htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BSBNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BSBNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditBankDetails", new { BankId = item.BankId }) |
+            @Html.ActionLink("Delete", "DeleteBank", new { BankId = item.BankId })
+        </td>
+    </tr>
+}
+
+</table>
+

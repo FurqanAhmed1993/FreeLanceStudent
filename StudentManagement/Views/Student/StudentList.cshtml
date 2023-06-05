@@ -1,0 +1,104 @@
+﻿@model IEnumerable<StudentManagement.Models.Student>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentList</title>
+    <style>
+        .search {
+            padding-top: 17px;
+        }
+        .create {
+            float: right;
+            margin-top: 47px;
+        }
+    </style>
+</head>
+<body>
+    <br />
+    @using (Html.BeginForm())
+    {
+<div class="form-group">
+
+
+    <div class="col-md-5">
+        FirstName: @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+    <div class="col-md-5">
+        LastName: @Html.Editor("LastName", new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+    <div class="col-md-2 search">
+
+        <input type="submit" value="Search" class="btn btn-default " />
+
+    </div>
+</div>
+
+  
+    }
+    <br />
+    <p>
+        @Html.ActionLink("Create New", "AddStudent", "Student", htmlAttributes: new { @class = "btn btn-primary create" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TermName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SemesterFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TermName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SemesterFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditStudentDetails", new { StudentId = item.StudentId }) |
+            @Html.ActionLink("Delete", "DeleteStudent", new { StudentId = item.StudentId })|
+            @Html.ActionLink("Send Email", "SendEmail", new { StudentId = item.StudentId })
+        </td>
+    </tr>
+        }
+
+    </table>
+</body>
+</html>

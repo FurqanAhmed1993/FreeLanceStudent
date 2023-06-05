@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Dashboard", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("Bank", "BankList", "Bank")</li>
+                    <li>@Html.ActionLink("Semester", "SemesterList", "Semester")</li>
+                    <li>@Html.ActionLink("Student", "StudentList", "Student")</li>
+                    <li>@Html.ActionLink("Payment", "PaymentList", "Payment")</li>
+                    <li>@Html.ActionLink("User", "UserLoginList", "User")</li>
+                    <li>@Html.ActionLink("LogOut", "LoginUser", "User")</li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        @*@if (ViewBag.Message != null)
+            {
+            <script type="text/javascript">
+
+                $(function() {
+            var message = '@ViewBag.Message';
+            if (message  != '')
+                swal({ title: "Done", text: message , icon: "error" });
+
+                });
+            </script>
+
+            }*@
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Student Management</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/SweetAlert")
+    @RenderSection("scripts", required: false)
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+       $(function () {
+
+        var message = '@ViewBag.Message';
+        if (message  != '')
+            swal({ title: "Done", text: message , icon: "error" });
+
+       });
+
+        $(".datepicker").datepicker({
+            dateFormat: "dd-mm-yy",
+            changemonth: true,
+            changeyear: true,
+            'setDate', 'today'
+        });
+  
+    </script>
+
+</body>
+</html>
